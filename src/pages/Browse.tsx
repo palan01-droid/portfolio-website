@@ -128,24 +128,25 @@ const Browse = () => {
         ))}
       </Row>
 
-      <Row title="Certifications">
-        {certificates.map((c) => (
-          <Card
-            key={c.id}
-            title={c.title}
-            subtitle={c.issuer}
-            thumb={c.thumb}
-            onClick={() =>
-              setModal({
-                title: c.title,
-                subtitle: c.issuer,
-                thumb: c.thumb,
-                bodyText: 'Placeholder — drop a real certificate image and details into src/data.ts.',
-              })
-            }
-          />
-        ))}
-      </Row>
+      {certificates.length > 0 && (
+        <Row title="Certifications">
+          {certificates.map((c) => (
+            <Card
+              key={c.id}
+              title={c.title}
+              subtitle={c.issuer}
+              thumb={c.thumb}
+              onClick={() =>
+                setModal({
+                  title: c.title,
+                  subtitle: c.issuer,
+                  thumb: c.thumb,
+                })
+              }
+            />
+          ))}
+        </Row>
+      )}
 
       <Footer />
       <Modal content={modal} onClose={() => setModal(null)} />

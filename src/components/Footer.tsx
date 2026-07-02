@@ -25,7 +25,7 @@ const Footer = () => {
           </a>
         </div>
         <p className="footer-note">{profile.location}</p>
-        <p className="footer-copy">© {new Date().getFullYear()} Anuj Pal. Built with React + Vite.</p>
+        <p className="footer-copy">© {new Date().getFullYear()} Anuj Pal.</p>
       </div>
     </footer>
   );

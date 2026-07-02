@@ -6,7 +6,7 @@ export const profile = {
   tagline: 'CS Sophomore · IIT Research Intern (x2) · NCAA D-III Varsity Athlete',
   location: 'Decorah, IA',
   email: 'anujpald07@gmail.com',
-  linkedin: 'https://linkedin.com/in/anujpal',
+  linkedin: 'https://www.linkedin.com/in/anujpal/',
   github: 'https://github.com/palan01-droid',
   summary:
     "Computer Science sophomore and two-time IIT research intern, building full-stack and embedded systems from real-time IoT dashboards to multi-sensor biomechanics instrumentation. NCAA D-III varsity athlete with a track record of delivering under load. Seeking a Summer 2027 internship.",
@@ -133,12 +133,8 @@ export const achievements: Achievement[] = [
   },
 ];
 
-export type Certificate = { id: string; title: string; issuer: string; thumb: string; placeholder: true };
+export type Certificate = { id: string; title: string; issuer: string; thumb: string };
 
-// Placeholders — drop real certificate images into public/certificates and
-// update the `title`/`issuer` fields (and add an `image` path) as needed.
-export const certificates: Certificate[] = [
-  { id: 'cert-1', title: 'Certificate Placeholder', issuer: 'Add your certification', thumb: '#2a2a2a', placeholder: true },
-  { id: 'cert-2', title: 'Certificate Placeholder', issuer: 'Add your certification', thumb: '#2a2a2a', placeholder: true },
-  { id: 'cert-3', title: 'Certificate Placeholder', issuer: 'Add your certification', thumb: '#2a2a2a', placeholder: true },
-];
+// Empty for now — add real certificates here as { id, title, issuer, thumb }
+// once you have them, and the Certifications row will reappear automatically.
+export const certificates: Certificate[] = [];
