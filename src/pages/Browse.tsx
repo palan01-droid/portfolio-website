@@ -107,6 +107,34 @@ const Browse = () => {
         ))}
       </Row>
 
+      {certificates.length > 0 && (
+        <Row title="Certifications">
+          {certificates.map((c) => (
+            <Card
+              key={c.id}
+              title={c.title}
+              subtitle={c.issuer}
+              thumb={c.thumb}
+              badge="Certificate"
+              onClick={() =>
+                setModal({
+                  title: c.title,
+                  subtitle: c.issuer,
+                  meta: c.date,
+                  thumb: c.thumb,
+                  points: c.points,
+                  tags: c.skills,
+                  links: [
+                    { label: 'View Certificate (PDF)', url: c.pdfUrl, icon: 'external' },
+                    { label: 'Resume', url: profile.resumeUrl, icon: 'external' },
+                  ],
+                })
+              }
+            />
+          ))}
+        </Row>
+      )}
+
       <Row title="Achievements & Awards" id="achievements">
         {achievements.map((a) => (
           <Card
@@ -127,26 +155,6 @@ const Browse = () => {
           />
         ))}
       </Row>
-
-      {certificates.length > 0 && (
-        <Row title="Certifications">
-          {certificates.map((c) => (
-            <Card
-              key={c.id}
-              title={c.title}
-              subtitle={c.issuer}
-              thumb={c.thumb}
-              onClick={() =>
-                setModal({
-                  title: c.title,
-                  subtitle: c.issuer,
-                  thumb: c.thumb,
-                })
-              }
-            />
-          ))}
-        </Row>
-      )}
 
       <Footer />
       <Modal content={modal} onClose={() => setModal(null)} />
