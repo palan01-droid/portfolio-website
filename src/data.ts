@@ -16,8 +16,8 @@ export const profile = {
 
 export const education = {
   school: 'Luther College',
-  degree: 'Bachelor of Arts in Computer Science',
-  dateRange: 'Aug. 2025 – May 2028 (Expected)',
+  degree: 'Bachelor\'s in Computer Science',
+  dateRange: 'Aug. 2025 – May 2029 (Expected)',
   location: 'Decorah, IA',
   coursework: ['Data Structures', 'Algorithms', 'Python Programming', 'Discrete Mathematics'],
 };
