@@ -4,7 +4,7 @@
 export const profile = {
   name: 'Anuj Pal',
   tagline: 'CS Sophomore · IIT Research Intern (x2) · NCAA D-III Varsity Athlete',
-  location: 'Decorah, IA',
+  location: 'Whitewater, WI',
   email: 'anujpald07@gmail.com',
   linkedin: 'https://www.linkedin.com/in/anujpal/',
   github: 'https://github.com/palan01-droid',
@@ -15,10 +15,10 @@ export const profile = {
 };
 
 export const education = {
-  school: 'Luther College',
-  degree: 'Bachelor of Arts in Computer Science',
-  dateRange: 'Aug. 2025 – May 2028 (Expected)',
-  location: 'Decorah, IA',
+  school: 'University of Wisconsin–Whitewater',
+  degree: 'Bachelor of Science in Computer Science',
+  dateRange: 'Fall 2026 – May 2029 (Expected)',
+  location: 'Whitewater, WI',
   coursework: ['Data Structures', 'Algorithms', 'Python Programming', 'Discrete Mathematics'],
 };
 
