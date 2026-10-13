@@ -12,7 +12,12 @@ const Hero = ({ onPlay, onInfo }: HeroProps) => {
     <section
       className="hero"
       id="hero"
-      style={profile.heroPhoto ? { background: `linear-gradient(90deg, var(--bg) 25%, rgba(10,10,10,0.75) 50%, rgba(10,10,10,0.25) 100%), url(${profile.heroPhoto}) right center / auto 100% no-repeat var(--bg)` } : undefined}
+      style={profile.heroPhoto ? {
+              background: `linear-gradient(90deg, var(--bg) 0%, rgba(10,10,10,0.9) 30%, rgba(10,10,10,0.45) 62%, rgba(10,10,10,0.35) 100%),
+                linear-gradient(0deg, var(--bg) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(10,10,10,0.7) 0%, transparent 25%),
+                url(${profile.heroPhoto}) center 40% / cover no-repeat var(--bg)`,
+            } : undefined}
     >
       <div className="hero-scrim" />
       <div className="hero-content">

@@ -5,14 +5,14 @@ export type Section = { heading: string; text: string };
 
 export const profile = {
   name: 'Anuj Pal',
-  tagline: 'CS Student at UW-Whitewater · IIT Delhi Research Intern · Varsity Tennis',
+  tagline: 'CS student at UW-Whitewater · tennis player · I like building things that run on live data',
   location: 'Whitewater, WI',
   email: 'pala06@uww.edu',
   linkedin: 'https://www.linkedin.com/in/anujpald/',
   github: 'https://github.com/palan01-droid',
   githubUser: 'palan01-droid',
   summary:
-    'Computer Science student at UW-Whitewater. I build real-time data apps and RAG chatbots in Python, and I did embedded and sensor research at IIT Delhi. Looking for a Summer 2027 internship.',
+    "I grew up in Chandigarh playing tennis, came to the US for college, and somewhere along the way started building things. So far that's sensor rigs at IIT Delhi, an AI tutor for my cyber class, and a live tracker for prediction markets. I'm looking for a Summer 2027 internship.",
   resumeUrl: '/anuj_pal_resume.pdf',
   photo: '/photos/anuj-chicago.jpg',
   heroPhoto: '/photos/iitd-team.jpg', // put a photo in public/photos and set this, e.g. '/photos/hero.jpg'
@@ -33,9 +33,10 @@ export const about: { id: string; title: string; subtitle: string; thumb: string
     subtitle: 'Chandigarh → Luther → UW-Whitewater',
     thumb: "url('/photos/anuj-chicago.jpg') center 60%/cover no-repeat",
     sections: [
-      { heading: 'Chandigarh, India', text: 'Grew up playing tennis and led the Chandigarh U-19 team to a bronze medal at the SGFI National School Games in Jan. 2025.' },
-      { heading: 'Luther College, Decorah IA (2025–26)', text: 'Started my CS degree and played varsity tennis on the team that won the American Rivers Conference.' },
-      { heading: 'UW-Whitewater (2026–)', text: 'Transferred to finish my B.S. in Computer Science, expected May 2029.' },
+      { heading: 'Chandigarh, India', text: 'Tennis was a big part of growing up. In January 2025 I led the Chandigarh U-19 team at the SGFI National School Games in Ranchi, and we came home with bronze.' },
+      { heading: 'Luther College, Decorah, Iowa (2025–26)', text: 'My first year in the US. I started my CS degree and played on the varsity tennis team, and we won the American Rivers Conference.' },
+      { heading: 'IIT Delhi (Summer 2026)', text: 'I went back to India for a research internship at the Centre for Biomedical Engineering, writing firmware and a live dashboard for sensors inside a head model used in helmet impact research.' },
+      { heading: 'UW-Whitewater (Fall 2026 – now)', text: 'I transferred to UW-Whitewater to finish my CS degree (May 2029). Outside class I work at the Career Center and keep building side projects.' },
     ],
   },
   {
@@ -44,9 +45,9 @@ export const about: { id: string; title: string; subtitle: string; thumb: string
     subtitle: 'Oct. 2026',
     thumb: "url('/photos/bg-now.jpg') center/cover no-repeat",
     sections: [
-      { heading: 'Building', text: 'OddsBrief, a live tracker and AI brief for Kalshi prediction markets.' },
-      { heading: 'Working', text: 'Website & Handshake Assistant at the UW-Whitewater Career Center.' },
-      { heading: 'Looking for', text: 'A Summer 2027 internship in software, AI, or embedded systems.' },
+      { heading: 'Building', text: 'OddsBrief. It watches Kalshi prediction markets live and writes a short daily brief with AI. You can try it at oddsbrief.onrender.com.' },
+      { heading: 'Working', text: 'Part time at the UW-Whitewater Career Center, keeping the website up to date and helping with Handshake.' },
+      { heading: 'Looking for', text: 'A Summer 2027 internship in software, AI, or embedded systems, somewhere I can ship real things and learn from people who are better than me.' },
     ],
   },
 ];
@@ -58,7 +59,7 @@ export type Experience = {
   location: string;
   dateRange: string;
   tags: string[];
-  points: string[];
+  story: Section[];
   githubUrl?: string;
   thumb: string; // color used for the placeholder tile art
 };
@@ -71,10 +72,10 @@ export const experience: Experience[] = [
     location: 'New Delhi, India',
     dateRange: 'Jun. 2026 – Aug. 2026',
     tags: ['C++', 'ESP32', 'FSR Sensors', 'Python', 'Flask', 'WebSockets', 'Chart.js'],
-    points: [
-      'Developed C++ firmware for multi-point FSR 402 sensor circuits across a 3-layer physical head model (skin, skull, brain) to capture force transmission for helmet impact research',
-      'Calibrated sensor voltage curves with 200g fixed weights and implemented a moving-average filter on ESP32, reducing baseline signal noise by 65%',
-      'Built a Python, Flask, and WebSocket stream to a live Chart.js dashboard, with a 3-channel peak-detection algorithm that auto-logs impact events to CSV',
+    story: [
+      { heading: 'The project', text: 'The lab studies how the force from an impact travels through the head, for helmet research. I worked on the sensing side: three FSR 402 force sensors placed at the skin, skull, and brain layers of a physical head model.' },
+      { heading: 'What I built', text: 'C++ firmware on an ESP32 to read all three sensors, and a Python Flask server that streams the readings over WebSockets to a live Chart.js dashboard. A peak detector catches every impact on all 3 channels and saves it to CSV, so nobody has to copy numbers by hand.' },
+      { heading: 'The hard part', text: 'The sensors were noisy even with nothing touching them. I calibrated each one with 200g weights and added a moving-average filter on the ESP32, which cut the baseline noise by about 65%.' },
     ],
     githubUrl: 'https://github.com/palan01-droid/drop_tower',
     thumb: "url('/photos/iitd-silicon-grafting.webp') center 45%/cover no-repeat",
@@ -86,9 +87,8 @@ export const experience: Experience[] = [
     location: 'Whitewater, WI',
     dateRange: 'Oct. 2026 – Present',
     tags: ['Ingeniux CMS', 'WCAG', 'Handshake'],
-    points: [
-      'Maintain and update Career Center web pages in Ingeniux CMS to meet WCAG standards',
-      'Publish event and resource listings and troubleshoot user accounts on Handshake',
+    story: [
+      { heading: 'What I do', text: 'I keep the Career Center website up to date in Ingeniux CMS and make sure the pages follow WCAG accessibility rules, so they work with screen readers. I also post events and resources on Handshake and help fix account problems when they come up.' },
     ],
     thumb: "url('/photos/uww-career-services.png') center/cover no-repeat",
   },
@@ -99,8 +99,7 @@ export type Project = {
   title: string;
   stack: string;
   dateRange?: string;
-  points: string[];
-  story?: Section[];
+  story: Section[];
   media?: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -113,17 +112,11 @@ export const projects: Project[] = [
     title: 'OddsBrief',
     stack: 'Python, Flask, WebSockets, Kalshi API, Gemini, Postgres + pgvector, Chart.js',
     dateRange: 'Sept. 2026 – Present',
-    // TODO: add a "Why I built it" section in your own words
     story: [
+      { heading: 'What it is', text: 'Kalshi is a site where people trade on real-world events, like whether a team wins or a player goes over a stat. Prices move all day, so OddsBrief puts it on one page: what moved, who placed big bets, and a short AI-written brief of the day.' },
       { heading: 'How it works', text: "It follows Kalshi's 500 most-traded markets through an authenticated WebSocket feed and pages the REST API with retry and backoff, so every $5,000+ trade gets flagged live. A forecast model scores each prediction with a Brier score before learning from it, calibrated across 10 price ranges per category. Gemini writes a daily recap using only data from the database." },
       { heading: 'What broke', text: 'Deploying to Render meant moving off local SQLite and ChromaDB to Supabase Postgres with pgvector for the RAG search. Behind Cloudflare, every visitor showed up with the same IP, so the rate limits hit everyone at once. I fixed it by reading the real visitor IP from the Cloudflare header.' },
-      { heading: 'A decision I made', text: 'The chatbot only answers from the top 5 matches in market rules, past briefs, and user comments, and shows its sources. It also refuses to give financial advice.' },
-    ],
-    points: [
-      "Real-time pipeline tracking Kalshi's 500 most-traded markets, flagging every $5,000+ trade live",
-      'Self-calibrating forecast model scored by Brier score across 10 price ranges per market category',
-      'RAG chatbot on Gemini that answers with cited sources, with guardrails against financial advice',
-      'Daily market recaps via Gemini, constrained to verified data and validated as structured JSON',
+      { heading: 'A decision I made', text: "I didn't want a chatbot that makes things up about money. It only answers from the top 5 matches in market rules, past briefs, and user comments, shows where each answer came from, and refuses to give financial advice." },
     ],
     liveUrl: 'https://oddsbrief.onrender.com/',
     githubUrl: 'https://github.com/palan01-droid/OddsBrief',
@@ -136,14 +129,9 @@ export const projects: Project[] = [
     stack: 'Python, Flask, ChromaDB, Ollama, Llama 3.2, python-pptx',
     dateRange: 'Aug. 2026 – Sept. 2026',
     story: [
-      { heading: 'Why I built it', text: 'For my CYBER 101 class, to study from the actual lecture slides instead of generic answers.' },
+      { heading: 'Why I built it', text: 'For my CYBER 101 class. I wanted to study from our actual lecture slides instead of getting generic answers from a chatbot that had never seen them.' },
       { heading: 'How it works', text: 'python-pptx reads the PowerPoint decks, the slide text goes into a ChromaDB vector index, and Llama 3.2 runs locally through Ollama. It costs $0 to run and no course data leaves my laptop.' },
       { heading: 'A decision I made', text: 'I first built the router with LangGraph as a multi-step agent. It only had to pick between two things (answer a question or make a quiz), so I replaced it with a simple if/else. Now both share one retrieval step and one prompt, and it is much easier to debug.' },
-    ],
-    points: [
-      'RAG study tool that answers questions and generates practice quizzes from lecture slides',
-      'Runs 100% locally at $0 cost with Llama 3.2 on Ollama',
-      'Rule-based router replaced a multi-step AI agent, so Q&A and quizzes share one retrieval step',
     ],
     githubUrl: 'https://github.com/palan01-droid/ai-tutor-rag',
     media: ['/videos/ai-tutor-demo.mp4'],
@@ -154,14 +142,10 @@ export const projects: Project[] = [
     title: 'Drop Tower',
     stack: 'C++, ESP32, Python (Flask, Socket.IO), Chart.js',
     dateRange: 'Jun. 2026 – Aug. 2026',
-    // TODO: add a "Why I built it" section in your own words
     story: [
+      { heading: 'What it is', text: 'This is the software side of my IIT Delhi internship, and the code is open source on GitHub.' },
       { heading: 'How it works', text: 'Three FSR 402 sensors sit in a head model at the skin, skull, and brain layers. The ESP32 reads them, Flask streams the readings over WebSockets, and a Chart.js dashboard shows the force moving through each layer. A peak detector logs every impact to CSV.' },
       { heading: 'What broke', text: 'The raw sensor readings were noisy even with nothing touching them. I calibrated each sensor with 200g weights and added a moving-average filter on the ESP32, which cut the baseline noise by 65%.' },
-    ],
-    points: [
-      'Biomechanics dashboard streaming live FSR 402 readings from a 3-layer head model',
-      'Auto-logs peak impact values and charts force across skin, skull, and brain',
     ],
     githubUrl: 'https://github.com/palan01-droid/drop_tower',
     thumb: '#5a1a3a',
@@ -170,11 +154,10 @@ export const projects: Project[] = [
     id: 'sensor-monitor',
     title: 'Sensor Monitor',
     stack: 'Python (Flask, Socket.IO), Groq LLM API, Supabase, Docker/Render',
-    points: [
-      'Full-stack platform streaming live sensor data from Arduino, ESP32, STM32, and Raspberry Pi Pico to a 3D dashboard over WebSockets',
-      'Groq LLM API (Llama 3.3 70B) powers a chat that answers questions about sensor data and explains anomalies',
-      'Google OAuth via Supabase, serial and WiFi sensor ingestion, PostgreSQL storage',
-      'Dockerized and deployed on Render, with 23 pytest tests',
+    story: [
+      { heading: 'What it is', text: 'A dashboard that shows live data from Arduino, ESP32, STM32, and Raspberry Pi Pico boards in 3D. You can plug a board in over USB or send data over WiFi, and there is a simulation mode if you have no hardware.' },
+      { heading: 'The AI part', text: 'An assistant on the Groq API (Llama 3.3 70B) answers questions about the readings and explains why an alert went off.' },
+      { heading: 'Under the hood', text: 'Google login through Supabase, Postgres for storage, 23 pytest tests, and Docker to deploy it on Render.' },
     ],
     liveUrl: 'https://sensor-monitor-n0rm.onrender.com',
     githubUrl: 'https://github.com/palan01-droid/sensor_monitor',
@@ -199,7 +182,7 @@ export const achievements: Achievement[] = [
     title: "Varsity Tennis — American Rivers Conference Champions",
     org: 'Luther College',
     dateRange: 'Aug. 2025 – May 2026',
-    detail: 'Played NCAA D-III varsity tennis on the conference-champion team while taking full-time CS courses.',
+    detail: 'My first year at Luther I played NCAA D-III varsity tennis while taking full-time CS classes, and our team won the American Rivers Conference. The last video is me trying a blind serve with a towel over my eyes.',
     media: ['/photos/luther-tennis.webp', '/photos/tennis-huddle.webp', '/videos/blind-serve.mp4'],
     thumb: "url('/photos/luther-tennis.webp') center 65%/cover no-repeat",
   },
@@ -208,7 +191,7 @@ export const achievements: Achievement[] = [
     title: 'Bronze Medal, SGFI National School Games',
     org: 'Chandigarh U-19 Tennis Team',
     dateRange: 'Jan. 2025',
-    detail: "Led the Chandigarh U-19 men's tennis team to a bronze medal at the national games.",
+    detail: "In January 2025 I led the Chandigarh U-19 boys' team at the 68th National School Games in Ranchi. We took bronze, which was the best way to finish school tennis before leaving for college.",
     media: ['/photos/sgfi-1-ceremony.jpg', '/photos/sgfi-2-ranchi.jpg', '/photos/sgfi-3-medals.jpg'],
     thumb: "url('/photos/sgfi-1-ceremony.jpg') center 60%/cover no-repeat",
   },
@@ -221,7 +204,7 @@ export type Certificate = {
   date: string;
   thumb: string;
   pdfUrl: string;
-  points: string[];
+  detail: string;
   skills: string[];
 };
 
@@ -233,13 +216,7 @@ export const certificates: Certificate[] = [
     date: 'Jul. 2026',
     thumb: "url('/certificates/jpmorganchase-software-engineering.png') center/cover no-repeat",
     pdfUrl: '/certificates/jpmorganchase-software-engineering.pdf',
-    points: [
-      'Integrated Kafka into a Spring Boot microservice to consume and deserialize high-volume transaction messages using a configurable topic and embedded Kafka test framework',
-      'Implemented transaction validation and persistence logic with Spring Data JPA and an H2 SQL database, including entity modeling and balance updates across relational User records',
-      'Connected the service to an external REST Incentive API using RestTemplate, processing incentive responses and incorporating them into transactional workflows',
-      'Developed a REST endpoint for querying user balances, returning JSON responses through a Spring controller while maintaining clean architectural boundaries',
-      'Verified system behavior using Maven test suites and debugger-driven inspection, ensuring reliability across message ingestion, database operations, and external API interactions',
-    ],
+    detail: 'A virtual job simulation from JPMorgan Chase on Forage. I worked on a Java Spring Boot service: it reads transactions from Kafka, checks and saves them with JPA, calls an outside REST API for incentives, and has an endpoint to look up user balances.',
     skills: ['Spring', 'Build Tools', 'Java Programming', 'Message Queuing', 'REST API', 'Spring Framework', 'SQL Database'],
   },
 ];

@@ -78,7 +78,7 @@ const Browse = () => {
                 subtitle: e.org,
                 meta: `${e.location} · ${e.dateRange}`,
                 thumb: e.thumb,
-                points: e.points,
+                sections: e.story,
                 tags: e.tags,
                 links: e.githubUrl ? [{ label: 'GitHub', url: e.githubUrl, icon: 'github' }] : [],
               })
@@ -103,7 +103,6 @@ const Browse = () => {
                 thumb: p.thumb,
                 sections: p.story,
                 media: p.media,
-                points: p.points,
                 links: [
                   ...(p.liveUrl ? [{ label: 'Live Demo', url: p.liveUrl, icon: 'external' as const }] : []),
                   ...(p.githubUrl ? [{ label: 'GitHub', url: p.githubUrl, icon: 'github' as const }] : []),
@@ -168,7 +167,7 @@ const Browse = () => {
                 subtitle: c.issuer,
                 meta: c.date,
                 thumb: c.thumb,
-                points: c.points,
+                bodyText: c.detail,
                 tags: c.skills,
                 links: [
                   { label: 'View Certificate (PDF)', url: c.pdfUrl, icon: 'external' },
