@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# personal photos, videos and resume stay local, they only go to vercel
+public/photos/
+public/videos/
+public/anuj_pal_resume.pdf

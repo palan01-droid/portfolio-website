@@ -5,8 +5,10 @@ import Row from '../components/Row';
 import Card from '../components/Card';
 import Modal, { type ModalContent } from '../components/Modal';
 import Footer from '../components/Footer';
+import GithubGraph from '../components/GithubGraph';
 import {
   profile,
+  about,
   experience,
   projects,
   skills,
@@ -27,7 +29,7 @@ const Browse = () => {
       title: profile.name,
       subtitle: profile.tagline,
       meta: profile.location,
-      thumb: 'linear-gradient(135deg, #1a1a1a, #3a1a1a)',
+      thumb: `url(${profile.photo}) center 60%/cover no-repeat`,
       bodyText: profile.summary,
       links: [
         { label: 'Email', url: `mailto:${profile.email}`, icon: 'external' },
@@ -42,6 +44,25 @@ const Browse = () => {
     <div className="browse">
       <Navbar onNavClick={scrollTo} />
       <Hero onPlay={() => scrollTo('projects')} onInfo={openAbout} />
+
+      <Row title="About Me" id="about">
+        {about.map((a) => (
+          <Card
+            key={a.id}
+            title={a.title}
+            subtitle={a.subtitle}
+            thumb={a.thumb}
+            onClick={() =>
+              setModal({
+                title: a.title,
+                subtitle: a.subtitle,
+                thumb: a.thumb,
+                sections: a.sections,
+              })
+            }
+          />
+        ))}
+      </Row>
 
       <Row title="Research & Experience" id="experience">
         {experience.map((e) => (
@@ -59,6 +80,7 @@ const Browse = () => {
                 thumb: e.thumb,
                 points: e.points,
                 tags: e.tags,
+                links: e.githubUrl ? [{ label: 'GitHub', url: e.githubUrl, icon: 'github' }] : [],
               })
             }
           />
@@ -77,7 +99,10 @@ const Browse = () => {
               setModal({
                 title: p.title,
                 subtitle: p.stack,
+                meta: p.dateRange,
                 thumb: p.thumb,
+                sections: p.story,
+                media: p.media,
                 points: p.points,
                 links: [
                   ...(p.liveUrl ? [{ label: 'Live Demo', url: p.liveUrl, icon: 'external' as const }] : []),
@@ -89,6 +114,8 @@ const Browse = () => {
         ))}
       </Row>
 
+      <GithubGraph />
+
       <Row title="Skills & Tools" id="skills">
         {skills.map((s) => (
           <Card
@@ -96,6 +123,7 @@ const Browse = () => {
             title={s.category}
             subtitle={`${s.items.length} skills`}
             thumb={s.thumb}
+            icons={s.icons}
             onClick={() =>
               setModal({
                 title: s.category,
@@ -107,35 +135,7 @@ const Browse = () => {
         ))}
       </Row>
 
-      {certificates.length > 0 && (
-        <Row title="Certifications">
-          {certificates.map((c) => (
-            <Card
-              key={c.id}
-              title={c.title}
-              subtitle={c.issuer}
-              thumb={c.thumb}
-              badge="Certificate"
-              onClick={() =>
-                setModal({
-                  title: c.title,
-                  subtitle: c.issuer,
-                  meta: c.date,
-                  thumb: c.thumb,
-                  points: c.points,
-                  tags: c.skills,
-                  links: [
-                    { label: 'View Certificate (PDF)', url: c.pdfUrl, icon: 'external' },
-                    { label: 'Resume', url: profile.resumeUrl, icon: 'external' },
-                  ],
-                })
-              }
-            />
-          ))}
-        </Row>
-      )}
-
-      <Row title="Achievements & Awards" id="achievements">
+      <Row title="Achievements & Certifications" id="achievements">
         {achievements.map((a) => (
           <Card
             key={a.id}
@@ -150,6 +150,30 @@ const Browse = () => {
                 meta: a.dateRange,
                 thumb: a.thumb,
                 bodyText: a.detail,
+                media: a.media,
+              })
+            }
+          />
+        ))}
+        {certificates.map((c) => (
+          <Card
+            key={c.id}
+            title={c.title}
+            subtitle={c.issuer}
+            thumb={c.thumb}
+            badge="Certificate"
+            onClick={() =>
+              setModal({
+                title: c.title,
+                subtitle: c.issuer,
+                meta: c.date,
+                thumb: c.thumb,
+                points: c.points,
+                tags: c.skills,
+                links: [
+                  { label: 'View Certificate (PDF)', url: c.pdfUrl, icon: 'external' },
+                  { label: 'Resume', url: profile.resumeUrl, icon: 'external' },
+                ],
               })
             }
           />

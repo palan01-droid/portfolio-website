@@ -1,0 +1,32 @@
+.gh {
+  padding: 26px 0;
+  scroll-margin-top: 80px;
+}
+
+.gh-box {
+  margin: 0 4vw;
+  overflow-x: auto;
+}
+
+.gh-grid {
+  display: grid;
+  grid-template-rows: repeat(7, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+  min-width: 700px;
+}
+
+.gh-day { aspect-ratio: 1; border-radius: 2px; background: var(--bg-card); }
+.gh-day.l1 { background: #5c0a0f; }
+.gh-day.l2 { background: #8f0d14; }
+.gh-day.l3 { background: #c20f18; }
+.gh-day.l4 { background: var(--red); }
+
+.gh-total {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--text-dim);
+  font-size: 13.5px;
+}
+.gh-total:hover { color: var(--text); }

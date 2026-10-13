@@ -1,6 +1,6 @@
 .footer {
   padding: 80px 6vw 50px;
-  background: linear-gradient(180deg, var(--bg) 0%, #050505 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(5,5,5,0.4) 100%), url('/photos/bg-footer.jpg') center/cover no-repeat, #050505;
   border-top: 1px solid var(--border);
   text-align: center;
   margin-top: 30px;

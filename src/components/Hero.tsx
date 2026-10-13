@@ -9,7 +9,11 @@ type HeroProps = {
 
 const Hero = ({ onPlay, onInfo }: HeroProps) => {
   return (
-    <section className="hero" id="hero">
+    <section
+      className="hero"
+      id="hero"
+      style={profile.heroPhoto ? { background: `linear-gradient(90deg, var(--bg) 25%, rgba(10,10,10,0.75) 50%, rgba(10,10,10,0.25) 100%), url(${profile.heroPhoto}) right center / auto 100% no-repeat var(--bg)` } : undefined}
+    >
       <div className="hero-scrim" />
       <div className="hero-content">
         <p className="hero-eyebrow">Featured Profile</p>

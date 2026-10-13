@@ -8,7 +8,9 @@ export type ModalContent = {
   meta?: string;
   thumb: string;
   bodyText?: string;
+  sections?: { heading: string; text: string }[];
   points?: string[];
+  media?: string[];
   tags?: string[];
   links?: { label: string; url: string; icon?: 'github' | 'external' }[];
 };
@@ -48,12 +50,29 @@ const Modal = ({ content, onClose }: ModalProps) => {
         <div className="modal-body">
           {content.meta && <p className="modal-meta">{content.meta}</p>}
           {content.bodyText && <p className="modal-text">{content.bodyText}</p>}
+          {content.sections && content.sections.map((sec) => (
+            <div key={sec.heading} className="modal-section">
+              <h3>{sec.heading}</h3>
+              <p className="modal-text">{sec.text}</p>
+            </div>
+          ))}
           {content.points && (
             <ul className="modal-points">
               {content.points.map((p, i) => (
                 <li key={i}>{p}</li>
               ))}
             </ul>
+          )}
+          {content.media && (
+            <div className="modal-media">
+              {content.media.map((m) =>
+                m.endsWith('.mp4') ? (
+                  <video key={m} src={m} controls muted playsInline loop />
+                ) : (
+                  <img key={m} src={m} alt="" />
+                )
+              )}
+            </div>
           )}
           {content.tags && content.tags.length > 0 && (
             <div className="modal-tags">
